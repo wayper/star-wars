@@ -1,0 +1,24 @@
+.error-body-content {
+    text-align: center;
+}
+.error-body-content h5 {
+    font-size: 2em;
+}
+
+.error-body-content p {
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 720px) {
+
+    .error-body-content h5 {
+        font-size: 1.4em;
+    }
+    
+    .error-body-content p {
+        font-size: 1em;
+        padding-top: 0;
+        padding-bottom: 0.5em;
+        margin: 0;
+    }
+  }

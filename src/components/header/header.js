@@ -5,7 +5,7 @@ import './header.css';
 const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div className="navbar-brand" href="#">Navbar</div>
+            <div className="navbar-brand text-info" href="#">Star wars</div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -16,19 +16,15 @@ const Header = () => {
                         <div className="nav-link" href="#">Home <span className="sr-only">(current)</span></div>
                     </li>
                     <li className="nav-item">
-                        <div className="nav-link" href="#">Features</div>
+                        <div className="nav-link" href="#">People</div>
                     </li>
                     <li className="nav-item">
-                        <div className="nav-link" href="#">Pricing</div>
+                        <div className="nav-link" href="#">Starships</div>
                     </li>
                     <li className="nav-item">
-                        <div className="nav-link" href="#">About</div>
+                        <div className="nav-link" href="#">Planets</div>
                     </li>
                 </ul>
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="text" placeholder="Search" />
-                        <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
             );
