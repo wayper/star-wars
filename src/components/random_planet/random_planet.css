@@ -2,10 +2,32 @@
     min-height: 20em;
 }
 
-.random-planet .planet-img {
+.random-planet .planet-img-container {
+    display: block;
+    position: relative;
     width: 280px;
     height: 280px;
-    border-radius: 6px;
+    background-color: #fff;
+    padding: 0;
+    border-radius: 50px;
+    box-shadow: 0 0 10px 5px;
+}
+
+.random-planet .planet-img-container::after {
+    display: block;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    content: '';
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 0 30px;
+    border-radius: inherit;
+}
+
+.random-planet .planet-img-container .planet-img {
+    border-radius: inherit;
+    box-shadow: inset 0 0 20px;
 }
 
 .random-planet .media-body h5 {

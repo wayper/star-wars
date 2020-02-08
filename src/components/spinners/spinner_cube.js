@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './spinner.css';
+import './spinner_cube.css';
 
-const Spinner = () => {
+const SpinnerСube = () => {
     return (
         <div className="loadingio-spinner-blocks-szpbr74hujs">
             <div className="ldio-5tgce18qf06">
@@ -19,4 +19,4 @@ const Spinner = () => {
     );
 }
 
-export default Spinner;
+export default SpinnerСube;
