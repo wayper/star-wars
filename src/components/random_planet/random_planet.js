@@ -56,7 +56,7 @@ export default class RandomPlanet extends Component {
         const contentBody = (!loading && !error) ? <PlanetView planet={planet}/> : null;
 
         return (
-            <div className="d-flex justify-content-center align-items-center media random-planet">
+            <div className="d-flex justify-content-start align-items-center media random-planet">
                 {spinnerBody}
                 {contentBody}
                 {errorBody}

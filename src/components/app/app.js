@@ -1,26 +1,22 @@
 import React, { Fragment, Component } from 'react';
 
 import Header from '../header/header';
-import ItemList from '../item_list/item_list';
-import PersonCard from '../person_card/person_card';
+import PeoplePage from '../people_page/people_page';
+import SwapiService from '../../services/swapi_service';
 import RandomPlanet from '../random_planet/random_planet';
 import ErrorIndicator from '../error_indicator/error_indicator';
+import FictitiousError from '../fictitious_error/fictitious_error';
 
 import './app.css';
 
 
 export default class App extends Component {
 
+    swapiService = new SwapiService();
+
     state = {
         toggleRandomPlanet: true,
-        selectedPersone: 5,
         hasError: false,
-    };
-
-    onItemSelected = (id) => {
-        this.setState({
-            selectedPersone: id,
-        });
     };
 
     onToggleRandomPlanet = () => {
@@ -31,12 +27,11 @@ export default class App extends Component {
     };
 
     componentDidCatch() {
-        console.log('componentDidCatch Error');
+        console.log('componentDidCatch Error App');
         this.setState({
             hasError: true,
-        })
-
-    }
+        });
+    };
 
     render() {
 
@@ -49,6 +44,7 @@ export default class App extends Component {
 
         return (
             <Fragment>
+                <div className="page-container bg-dark">
                 <Header />
                 {randomPlanet}
                 <div className="d-flex flex-row justify-content-center">
@@ -56,11 +52,15 @@ export default class App extends Component {
                         type="button" 
                         className="btn btn-outline-warning border border-warning my-2"
                         onClick={this.onToggleRandomPlanet}>Toggle random planet</button>
+                    <FictitiousError />
                 </div>
-                <div className="d-flex flex-row justify-content-around align-items-center py-2 container-content">
-                    <ItemList onItemSelected={this.onItemSelected} />
-                    <PersonCard personId={this.state.selectedPersone}/>
-                </div>
+                <PeoplePage 
+                    getData={this.swapiService.getAllPeople}
+                    renderItemLabel={({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})`} />
+                <PeoplePage 
+                    getData={this.swapiService.getAllPlanets}
+                    renderItemLabel={({ name, diameter }) => `${name} (${diameter})`} />
+                    </div>
             </Fragment>
         );
     }

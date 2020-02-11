@@ -4,7 +4,7 @@ const PlanetView = ({ planet }) => {
     const { id, name, population, rotationPeriod, diameter } = planet;
     return (
         <Fragment>
-            <div className="planet-img-container mr-3">
+            <div className="planet-img-container m-2 m-sm-4">
                 <img className="img-fluid align-items-center planet-img" src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt={name} />
             </div>
             <div className="d-flex flex-column col-6 media-body">

@@ -1,10 +1,11 @@
 .navbar .navbar-brand {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.6em;
     text-shadow: 0.5em 0.5em 1.5em black;
 }
 
 .navbar .navbar-collapse .navbar-nav .nav-item {
+    font-size: 1.4em;
     cursor: url('./arrow.cur'), pointer;
 }

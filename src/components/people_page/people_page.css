@@ -1,0 +1,22 @@
+.row-content-container {
+    background-color: #fff;
+    border: 2px solid black;
+    height: 400px;
+}
+
+.left-content-box,
+.right-content-box {
+    margin: 0 1em;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgb(15, 155, 45);
+    width: 50%;
+}
+
+@media screen and (max-width: 780px) {
+    .left-content-box,
+    .right-content-box {
+        margin: 0;
+        width: 100%;
+}
+}
