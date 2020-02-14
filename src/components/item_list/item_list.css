@@ -1,0 +1,7 @@
+.item-list-content {
+    width: 100%;
+}
+
+.item-list-content .list-group-item {
+    text-align: left;
+    cursor: url('../header/arrow.cur'), pointer;}

@@ -5,7 +5,7 @@ const PersonsListGroup = ({personsGroup}) => {
     if (personsGroup) {
         const personList = personsGroup.map((name, idx) => {
             return (
-                <li key={idx} className="list-group-item">{name}</li>
+                <li key={idx} className="d-flex align-items-stretch list-group-item">{name}</li>
             );
         });
     }
@@ -19,8 +19,4 @@ const PersonsListGroup = ({personsGroup}) => {
 }
 
 export default PersonsListGroup;
-
-// {peopleList}
-// peopleList.map((person) => <li className="list-group-item">person.name</li>
-
 

@@ -1,11 +1,13 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 
 import Header from '../header/header';
-import PeoplePage from '../people_page/people_page';
+// import ItemPage from '../item_page/item_page';
+import ItemList from '../item_list/item_list';
 import SwapiService from '../../services/swapi_service';
 import RandomPlanet from '../random_planet/random_planet';
-import ErrorIndicator from '../error_indicator/error_indicator';
-import FictitiousError from '../fictitious_error/fictitious_error';
+import ErrorBoundry from '../error_indicator/error_boundry';
+import ItemDetailsCard, { Record } from '../item_details_card/item_details_card';
+import ItemRowContent from '../item_row_content/item_row_content';
 
 import './app.css';
 
@@ -16,52 +18,81 @@ export default class App extends Component {
 
     state = {
         toggleRandomPlanet: true,
-        hasError: false,
     };
 
     onToggleRandomPlanet = () => {
-        const {toggleRandomPlanet} = this.state;
+        const { toggleRandomPlanet } = this.state;
         this.setState({
             toggleRandomPlanet: !toggleRandomPlanet,
         });
     };
 
-    componentDidCatch() {
-        console.log('componentDidCatch Error App');
-        this.setState({
-            hasError: true,
-        });
-    };
-
     render() {
-
-        if (this.state.hasError) {
-            return <div className="d-flex justify-content-center mt-5"><ErrorIndicator /></div>
-        }
-
         const { toggleRandomPlanet } = this.state;
         const randomPlanet = toggleRandomPlanet ? <RandomPlanet /> : null;
 
+        const { getPersone, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
+
+        const itemList = (
+            <ItemList
+                onItemSelected={this.onItemSelected}
+                getData={this.props.getData}
+                renderItemLabel={this.props.renderItemLabel} />
+        );
+
+        const itemList2 = (<ItemList 
+        getData={this.swapiService.getAllPeople}
+        renderItemLabel={({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})`} />);
+
+        const personDetails = (
+            <ItemDetailsCard
+                itemId={11}
+                getData={getPersone}
+                getImageUrl={getPersonImage}>
+                <Record field='gender' label='Gender' />
+                <Record field='eyeColor' label='Eye Color' />
+            </ItemDetailsCard>
+        );
+
+        const starshipDetails = (
+            <ItemDetailsCard
+                itemId={5}
+                getData={getStarship}
+                getImageUrl={getStarshipImage} >
+
+                <Record field='model' label='Model' />
+                <Record field='manufacturer' label='Manufacturer' />
+                <Record field='costInCredits' label='Cost' />
+                <Record field='length' label='Length' />
+                <Record field='crew' label='Crew' />
+                <Record field='cargoCapacity' label='Cargo Capacity' />
+
+            </ItemDetailsCard>
+        );
+
         return (
-            <Fragment>
+            <ErrorBoundry>
                 <div className="page-container bg-dark">
-                <Header />
-                {randomPlanet}
-                <div className="d-flex flex-row justify-content-center">
-                    <button 
-                        type="button" 
-                        className="btn btn-outline-warning border border-warning my-2"
-                        onClick={this.onToggleRandomPlanet}>Toggle random planet</button>
-                    <FictitiousError />
-                </div>
-                <PeoplePage 
-                    getData={this.swapiService.getAllPeople}
-                    renderItemLabel={({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})`} />
-                <PeoplePage 
-                    getData={this.swapiService.getAllPlanets}
-                    renderItemLabel={({ name, diameter }) => `${name} (${diameter})`} />
+                    <Header />
+                    {randomPlanet}
+                    <div className="d-flex flex-row justify-content-center">
+                        <button
+                            type="button"
+                            className="btn btn-outline-warning border border-warning my-2"
+                            onClick={this.onToggleRandomPlanet}>Toggle random planet</button>
                     </div>
-            </Fragment>
+                    <ErrorBoundry>
+                        <ItemRowContent leftElem={personDetails} rightElem={starshipDetails} />
+                    </ErrorBoundry>
+                    <ErrorBoundry>
+                        <ItemRowContent leftElem={itemList2} rightElem="" />
+                    </ErrorBoundry>
+                    <ItemList 
+                        getData={this.swapiService.getAllPeople}
+                        renderItemLabel={({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})`} />
+                </div>
+
+            </ErrorBoundry>
         );
     }
 };

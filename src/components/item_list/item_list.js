@@ -39,9 +39,7 @@ export default class ItemList extends Component {
         });
     }
 
-
     render() {
-
         const { itemList } = this.state;
 
         if (!itemList) {
@@ -51,7 +49,7 @@ export default class ItemList extends Component {
         const items = this.renderItems(itemList);
 
         return (
-            <ul className="list-group list-group-flush col-4">
+            <ul className="list-group list-group-flush item-list-content">
                 {items}
             </ul>
         );

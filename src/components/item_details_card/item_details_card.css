@@ -1,0 +1,19 @@
+.person-card {
+    overflow: hidden;
+}
+
+.person-card .person-card-img {
+    max-width: 15em;
+    border-radius: 2em;
+}
+
+.person-card .list-group-item {
+    text-align: left;
+    font-size: 1em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+}
+
+.person-card .list-group-item .item-label {
+    margin: 0 10px 0 0;
+}
