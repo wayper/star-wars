@@ -1,0 +1,14 @@
+.error-indicator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: rgb(255, 102, 0);
+    font-size: 1.5em;
+}
+
+.error-indicator .boom {
+    font-size: 1.5em;
+    font-weight: bold;
+}
